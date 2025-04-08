@@ -39,11 +39,16 @@ class MiddotLine extends StatelessWidget {
         RichText(
           text: TextSpan(
             text: text,
-            style: const TextStyle(fontSize: 16, height: 1.8),
+            style: const TextStyle(
+              fontSize: 16,
+              fontFamily: 'NotoSansKR',
+              height: 1.8,
+            ),
             children: [
               TextSpan(
                 text: boldText,
                 style: const TextStyle(
+                  fontFamily: 'NotoSansKR',
                   fontSize: 16,
                   height: 1.8,
                   fontWeight: FontWeight.bold,
