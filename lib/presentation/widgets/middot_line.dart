@@ -7,7 +7,7 @@ class Middot extends StatelessWidget {
   final double marginB;
   const Middot({
     this.marginB = 8,
-    this.marginT = 12,
+    this.marginT = 16,
     this.marginL = 8,
     this.marginR = 8,
     super.key,

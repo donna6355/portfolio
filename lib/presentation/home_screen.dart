@@ -39,6 +39,36 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                            onPressed: () {
+                              if (kIsWeb) {
+                                js.context.callMethod(
+                                    'open', ['https://github.com/donna6355']);
+                              }
+                            },
+                            child: const Text('깃헙')),
+                        TextButton(
+                            onPressed: () {
+                              if (kIsWeb) {
+                                js.context.callMethod('open', [
+                                  'https://play.google.com/store/apps/developer?id=Donna+Jun'
+                                ]);
+                              }
+                            },
+                            child: const Text('앱 구경가기')),
+                        TextButton(
+                            onPressed: () {
+                              if (kIsWeb) {
+                                js.context.callMethod(
+                                    'open', ['mailto:donnajun1214@gmail.com']);
+                              }
+                            },
+                            child: const Text('이메일 보내기')),
+                      ],
+                    ),
                     MiddotLine(
                       '과거에는 국제 행사 기획자로서 일했다가, 웹개발로 소프트웨어 개발을 시작해서\n현재는 플러터와 다트로 크로스 플랫폼을 탐험하는 ',
                       '${DateTime.now().expYear}년차 개발자',
@@ -51,36 +81,7 @@ class HomeScreen extends StatelessWidget {
                 )
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                    onPressed: () {
-                      if (kIsWeb) {
-                        js.context.callMethod(
-                            'open', ['https://github.com/donna6355']);
-                      }
-                    },
-                    child: const Text('깃헙')),
-                TextButton(
-                    onPressed: () {
-                      if (kIsWeb) {
-                        js.context.callMethod('open', [
-                          'https://play.google.com/store/apps/developer?id=Donna+Jun'
-                        ]);
-                      }
-                    },
-                    child: const Text('앱 구경가기')),
-                TextButton(
-                    onPressed: () {
-                      if (kIsWeb) {
-                        js.context.callMethod(
-                            'open', ['mailto:donnajun1214@gmail.com']);
-                      }
-                    },
-                    child: const Text('이메일 보내기')),
-              ],
-            ),
+            const SizedBox(height: 20),
             const Wrap(
               children: [
                 SkillBadge(Img.flutter),
@@ -100,6 +101,69 @@ class HomeScreen extends StatelessWidget {
                 SkillBadge(Img.node),
                 SkillBadge(Img.mongo),
               ],
+            ),
+            const SizedBox(height: 32),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Divider(),
+            ),
+            const SizedBox(
+              width: 800,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 32),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Project',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Divider(),
+            ),
+            const SizedBox(
+              width: 800,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 32),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Career',
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        MiddotLine(
+                            '2023.11 ~ 2024.01 모바일 앱 개발 (계약직) ', '퓨처커넥트'),
+                        MiddotLine(
+                            '2022.04 ~ 2023.11 모바일/데스크탑 앱 개발 ', '오이스터에이블'),
+                        MiddotLine(
+                            '2020.11 ~ 2022.04 웹, 모바일 앱 개발 ', '플랙스 뉴럴랩스'),
+                        MiddotLine('2019.09 ~ 2020.02 ', 'TN Korea'),
+                        MiddotLine('2015.04 ~ 2018.05 국제행사 기획 ',
+                            '킴스엔앰티/Pacific World'),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ),
