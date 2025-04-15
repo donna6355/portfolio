@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:get/get.dart';
 
 class UserProvider extends GetConnect {
@@ -11,6 +14,37 @@ class UserProvider extends GetConnect {
       'file': MultipartFile(image, filename: 'avatar.png'),
       'otherFile': MultipartFile(image, filename: 'cover.png'),
     });
+    return post('http://youapi/users/upload', form);
+  }
+
+  Future<Response> postImagesWithData(List<int> image) {
+    final form = FormData({
+      'file': MultipartFile(image, filename: 'avatar.png'),
+      'otherFile': MultipartFile(image, filename: 'cover.png'),
+    });
+
+    Future<bool> submitInquiryGet(
+      Map<String, dynamic> payload,
+      List<File>? files,
+    ) async {
+      final multiFiles = <MultipartFile>[];
+      if (files != null) {
+        for (final file in files) {
+          multiFiles.add(MultipartFile(file, filename: 'filename'));
+        }
+      }
+      final response = await post(
+        '/common/cs/inquiry',
+        FormData({'data': jsonEncode(payload), 'files': multiFiles}),
+        contentType: 'multipart/form-data',
+      );
+      if (response.statusCode == 201) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     return post('http://youapi/users/upload', form);
   }
 
